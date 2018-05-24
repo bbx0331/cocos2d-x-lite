@@ -46,6 +46,8 @@
 #include "scripting/js-bindings/manual/jsb_conversions.hpp"
 #include "scripting/js-bindings/manual/jsb_module_register.hpp"
 #include "scripting/js-bindings/manual/jsb_global.h"
+#include "scripting/js-bindings/auto/jsb_external_sqlite_auto.hpp"
+#include "scripting/js-bindings/manual/jsb_external_sqlite_manual.hpp"
 
 static bool reloadScript(const string& file)
 {
@@ -193,6 +195,9 @@ bool RuntimeJsImpl::initJsEnv()
     });
 
     jsb_register_all_modules();
+
+	se->addRegisterCallback(register_all_external_sqlite);
+	se->addRegisterCallback(register_all_external_sqlite_manual);
     
     se->addRegisterCallback(register_FileUtils);
     se->start();

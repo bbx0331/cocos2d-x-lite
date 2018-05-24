@@ -13,6 +13,21 @@
     <Filter Include="Classes\ide-support">
       <UniqueIdentifier>{9f68f9a7-7069-4c93-94ae-942a0aa910c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\external">
+      <UniqueIdentifier>{88935fbc-3341-40a7-9390-72e4554e6a37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scripting">
+      <UniqueIdentifier>{60b3991f-33cd-4e25-8748-65e03268bd40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scripting\js-bindings">
+      <UniqueIdentifier>{ca760e2a-e41c-429d-8504-cfedad6a7bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scripting\js-bindings\auto">
+      <UniqueIdentifier>{bcddb8ab-f626-426c-ab31-8ce70b25ff38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scripting\js-bindings\manual">
+      <UniqueIdentifier>{99eccf28-48e3-432c-a7f5-9be6405adbf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h">
@@ -35,6 +50,15 @@
     <ClInclude Include="..\Classes\ide-support\RuntimeJsImpl.h">
       <Filter>Classes\ide-support</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\external\DBSqlite.h">
+      <Filter>Classes\external</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scripting\js-bindings\auto\jsb_external_sqlite_auto.hpp">
+      <Filter>Classes\scripting\js-bindings\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scripting\js-bindings\manual\jsb_external_sqlite_manual.hpp">
+      <Filter>Classes\scripting\js-bindings\manual</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -52,6 +76,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\cocos\scripting\js-bindings\manual\jsb_module_register.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\external\DBSqlite.cpp">
+      <Filter>Classes\external</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scripting\js-bindings\auto\jsb_external_sqlite_auto.cpp">
+      <Filter>Classes\scripting\js-bindings\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scripting\js-bindings\manual\jsb_external_sqlite_manual.cpp">
+      <Filter>Classes\scripting\js-bindings\manual</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
