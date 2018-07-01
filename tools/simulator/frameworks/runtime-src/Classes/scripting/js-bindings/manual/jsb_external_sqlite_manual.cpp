@@ -6,7 +6,7 @@
 #include "cocos/scripting/js-bindings/manual/jsb_global.h"
 #include "cocos/scripting/js-bindings/manual/jsb_helper.hpp"
 #include "scripting/js-bindings/auto/jsb_external_sqlite_auto.hpp"
-#include "external/DBSqlite.h"
+#include "external/sqlite3/DBSqlite.h"
 
 using namespace cocos2d;
 

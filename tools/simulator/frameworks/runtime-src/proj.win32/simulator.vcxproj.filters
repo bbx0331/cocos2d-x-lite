@@ -28,6 +28,9 @@
     <Filter Include="Classes\scripting\js-bindings\manual">
       <UniqueIdentifier>{99eccf28-48e3-432c-a7f5-9be6405adbf9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\external\sqlite3">
+      <UniqueIdentifier>{bb4c3498-672f-477e-8c23-f6e284a6b945}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h">
@@ -50,14 +53,14 @@
     <ClInclude Include="..\Classes\ide-support\RuntimeJsImpl.h">
       <Filter>Classes\ide-support</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\external\DBSqlite.h">
-      <Filter>Classes\external</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\scripting\js-bindings\auto\jsb_external_sqlite_auto.hpp">
       <Filter>Classes\scripting\js-bindings\auto</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\scripting\js-bindings\manual\jsb_external_sqlite_manual.hpp">
       <Filter>Classes\scripting\js-bindings\manual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\external\sqlite3\DBSqlite.h">
+      <Filter>Classes\external\sqlite3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,14 +80,14 @@
     <ClCompile Include="..\..\..\..\..\cocos\scripting\js-bindings\manual\jsb_module_register.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\external\DBSqlite.cpp">
-      <Filter>Classes\external</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\scripting\js-bindings\auto\jsb_external_sqlite_auto.cpp">
       <Filter>Classes\scripting\js-bindings\auto</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\scripting\js-bindings\manual\jsb_external_sqlite_manual.cpp">
       <Filter>Classes\scripting\js-bindings\manual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\external\sqlite3\DBSqlite.cpp">
+      <Filter>Classes\external\sqlite3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

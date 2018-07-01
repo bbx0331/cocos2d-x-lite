@@ -73,7 +73,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\runtime;$(ProjectDir)..\Classes\ide-support;$(EngineRoot)cocos\base;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\scripting\js-bindings\auto;$(EngineRoot)cocos\scripting\js-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\win32\include;$(EngineRoot)external\win32\include\chipmunk;$(EngineRoot)external\win32\include\curl;$(EngineRoot)external\win32\include\glfw3;$(EngineRoot)external\win32\include\v8;$(EngineRoot)tools\simulator\libsimulator\lib;$(EngineRoot)tools\simulator\libsimulator\lib\protobuf-lite;$(EngineRoot)extensions;$(EngineRoot);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\external;$(ProjectDir)..\Classes\runtime;$(ProjectDir)..\Classes\ide-support;$(EngineRoot)cocos\base;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)cocos\scripting\js-bindings\auto;$(EngineRoot)cocos\scripting\js-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\win32\include;$(EngineRoot)external\win32\include\chipmunk;$(EngineRoot)external\win32\include\curl;$(EngineRoot)external\win32\include\glfw3;$(EngineRoot)external\win32\include\v8;$(EngineRoot)tools\simulator\libsimulator\lib;$(EngineRoot)tools\simulator\libsimulator\lib\protobuf-lite;$(EngineRoot)extensions;$(EngineRoot);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -97,6 +97,8 @@
       <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
     </Link>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -213,7 +215,7 @@ xcopy /Y /Q "$(OutDir)lang" "$(ProjectDir)..\..\..\runtime\win32"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\external\DBSqlite.h" />
+    <ClInclude Include="..\Classes\external\sqlite3\DBSqlite.h" />
     <ClInclude Include="..\Classes\ide-support\CodeIDESupport.h" />
     <ClInclude Include="..\Classes\ide-support\RuntimeJsImpl.h" />
     <ClInclude Include="..\Classes\scripting\js-bindings\auto\jsb_external_sqlite_auto.hpp" />
@@ -227,7 +229,7 @@ xcopy /Y /Q "$(OutDir)lang" "$(ProjectDir)..\..\..\runtime\win32"
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\cocos\scripting\js-bindings\manual\jsb_module_register.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\external\DBSqlite.cpp" />
+    <ClCompile Include="..\Classes\external\sqlite3\DBSqlite.cpp" />
     <ClCompile Include="..\Classes\ide-support\RuntimeJsImpl.cpp" />
     <ClCompile Include="..\Classes\scripting\js-bindings\auto\jsb_external_sqlite_auto.cpp" />
     <ClCompile Include="..\Classes\scripting\js-bindings\manual\jsb_external_sqlite_manual.cpp" />

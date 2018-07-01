@@ -1,7 +1,7 @@
 #include "scripting/js-bindings/auto/jsb_external_sqlite_auto.hpp"
 #include "scripting/js-bindings/manual/jsb_conversions.hpp"
 #include "scripting/js-bindings/manual/jsb_global.h"
-#include "external/DBSqlite.h"
+#include "external/sqlite3/DBSqlite.h"
 
 se::Object* __jsb_DBSqlite_proto = nullptr;
 se::Class* __jsb_DBSqlite_class = nullptr;
