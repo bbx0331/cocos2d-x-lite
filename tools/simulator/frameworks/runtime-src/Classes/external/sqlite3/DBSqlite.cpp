@@ -29,6 +29,11 @@ void DBSqlite::regsiterCallBack(std::function<int(int, std::vector<std::string>,
 
 int DBSqlite::callFunction(void* para, int count, char** column_value, char** column_name)
 {
+	if (nullptr == m_pCallBack)
+	{
+		return 0;
+	}
+
 	std::vector<std::string> value;
 	value.resize(count);
 	for (int i = 0; i < count; i++)
@@ -40,16 +45,31 @@ int DBSqlite::callFunction(void* para, int count, char** column_value, char** co
 	name.resize(count);
 	for (int i = 0; i < count; i++)
 	{
-		value[i] = column_name[i];
+		name[i] = column_name[i];
 	}
 
-	return m_pCallBack(count, value, name);;
+	return m_pCallBack(count, value, name);
 }
 
 // 回调函数  
 int loadRecordCB(void * para, int n_column, char ** column_value, char ** column_name)
 {
 	return DBSqlite::getInstance()->callFunction(para, n_column, column_value, column_name);
+}
+
+// 回调函数  
+int existTableCB(void * para, int n_column, char ** column_value, char ** column_name)
+{
+	if (1 == n_column)
+	{
+		int exist = atoi(*(column_value));
+		if (nullptr != para)
+		{
+			int* res = (int*)para;
+			*res = exist;
+		}
+	}
+	return 0;
 }
 
 // 用来判断表格是否存在  
@@ -59,16 +79,19 @@ bool DBSqlite::existTable(std::string name)
 	if (nullptr != m_pDBSqlite)
 	{
 		// 判断表是否存在  
-		bool isExisted;
-		std::string sqlstr = "select count(type) from sqlite_master where type='table' and name ='" + name + "'";
-		int result = sqlite3_exec(m_pDBSqlite, sqlstr.c_str(), loadRecordCB, &isExisted, &m_pErrMsg);
-		return isExisted;
+		std::string sqlstr = "select count(*) from sqlite_master where type = 'table' and name = '" + name + "';";
+		int count = 0;
+		int result = sqlite3_exec(m_pDBSqlite, sqlstr.c_str(), existTableCB, &count, &m_pErrMsg);
+		if (SQLITE_OK == result)
+		{
+			return count > 0;
+		}
 	}
 	return false;
 }
 
 // 在数据库中判断名为name的表示否存在，如果不存在则创建这张表  
-// @示例语句string sqlstr = "create table user(id integer,username text,password text)";  
+// @示例语句string sqlstr = "create table user (id integer, username text, password text)";  
 void DBSqlite::createTable(std::string sql, std::string name)
 {
 	if (!existTable(name))
@@ -97,7 +120,7 @@ void DBSqlite::deleteTable(std::string sql, std::string name)
 }
 
 // 插入数据  
-// @示例语句string sqlstr = " insert into MyTable_1( name ) values ( '擎天柱' ) ";  
+// @示例语句string sqlstr = "insert into table_name values ('擎天柱')";  
 void DBSqlite::insertData(std::string sql)
 {
 	int result = sqlite3_exec(m_pDBSqlite, sql.c_str(), NULL, NULL, &m_pErrMsg);
@@ -108,7 +131,7 @@ void DBSqlite::insertData(std::string sql)
 }
 
 // 删除数据  
-// @示例语句string sqlstr = "delete from MyTable_1 where ID = 2";  
+// @示例语句string sqlstr = "delete from table_name where ID = 2";  
 void DBSqlite::deleteData(std::string sql)
 {
 	int result = sqlite3_exec(m_pDBSqlite, sql.c_str(), NULL, NULL, &m_pErrMsg);
@@ -119,7 +142,7 @@ void DBSqlite::deleteData(std::string sql)
 }
 
 // 修改数据  
-// @示例语句string sqlstr = "update MyTable_1 set name='威震天' where ID = 3"; 
+// @示例语句string sqlstr = "update table_name set name = '威震天' where ID = 3"; 
 void DBSqlite::updateData(std::string sql)
 {
 	int result = sqlite3_exec(m_pDBSqlite, sql.c_str(), NULL, NULL, &m_pErrMsg);

@@ -69,7 +69,7 @@ static bool js_external_sqlite_DBSqlite_regsiterCallBack(se::State& s)
 }
 SE_BIND_FUNC(js_external_sqlite_DBSqlite_regsiterCallBack)
 
-static bool register_sqlite_manual(se::Object* obj)
+bool register_sqlite_manual(se::Object* obj)
 {
 	__jsb_DBSqlite_proto->defineFunction("regsiterCallBack", _SE(js_external_sqlite_DBSqlite_regsiterCallBack));
 

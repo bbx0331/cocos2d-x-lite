@@ -14,7 +14,8 @@ endif
 
 LOCAL_SRC_FILES := hellojavascript/main.cpp \
 				   ../../Classes/AppDelegate.cpp \
-				   ../../Classes/external/DBSqlite.cpp \
+				   ../../Classes/external/sqlite3/sqlite3.c \
+				   ../../Classes/external/sqlite3/DBSqlite.cpp \
 				   ../../Classes/ide-support/RuntimeJsImpl.cpp \
 				   ../../Classes/scripting/js-bindings/auto/jsb_external_sqlite_auto.cpp \
 				   ../../Classes/scripting/js-bindings/manual/jsb_external_sqlite_manual.cpp \
